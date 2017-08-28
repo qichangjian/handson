@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.sxt.vo.employee.mapper">
+	<select id="list" resultType="Employee">
+		select * from employee
+	</select>
+	
+	<!-- 添加用户 -->
+  	<insert id="addEmployee" parameterType="Map" useGeneratedKeys="true">
+  		insert into  EMPLOYEE(EMP_NAME,EMP_SEX,EMP_AGE,EMP_DEPART) values(#{emp_name},#{emp_sex},#{emp_age},#{emp_depart})
+  	</insert>
+  	
+  	<!-- 删除用户 -->
+  	<delete id="deleteEmployee">
+  		delete from EMPLOYEE where EMP_ID = #{emp_id}
+  	</delete>
+  	
+  	<!-- 修改用户 -->
+  	<update id="updateEmployee" parameterType="Map">
+  		update EMPLOYEE set EMP_NAME=#{emp_name},EMP_SEX=#{emp_sex},EMP_AGE=#{emp_age},EMP_DEPART=#{emp_depart} where EMP_ID = #{emp_id}
+  	</update>
+</mapper>
